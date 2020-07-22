@@ -1,0 +1,20 @@
+---
+   - hosts: all
+     become: yes
+     tasks:
+           - name: install apache on servers
+             yum: 
+                 name : httpd
+                 state: present
+           - name: install git
+             yum : 
+                  name: git
+                  state: present
+           - name: start the apache service on target machines
+             service:
+                  name: httpd
+                  state: restarted
+           - name: deploy code on machine
+             git:
+                  repo: https://github.com/shahataaz/demowebapp.git
+                  dest: /var/www/html/index.html       

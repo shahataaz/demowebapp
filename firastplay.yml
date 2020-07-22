@@ -1,0 +1,12 @@
+I---
+  - hosts : server1
+    become: yes
+    gather_facts: false
+    tasks:
+I         - name: print any message
+             debug:
+                   msg: "debug module is used to print in ansible"
+          - git:
+                 repo: https://github.com/shahataaz/demowebapp.git
+                 dest: /var/www/index.html
+
